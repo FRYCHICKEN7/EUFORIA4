@@ -19,6 +19,16 @@ pnpm check && pnpm lint && pnpm test
 
 La suite actual pasa con 39 pruebas y 1 prueba marcada como omitida por requerir una sesión externa. Estas comprobaciones no sustituyen un build EAS, una prueba en dispositivo físico ni el despliegue de Firebase.
 
+### Bundle Android generado
+
+Se puede regenerar el bundle JavaScript Android con:
+
+```bash
+pnpm exec expo export --platform android --output-dir dist/android --no-bytecode
+```
+
+El artefacto resultante se entrega en `artifacts/EUFORIA4-android-bundle.zip`. Es un bundle de producción para un contenedor nativo Expo/EAS; no es un APK instalable por sí solo. Para crear el APK/AAB final se necesita un entorno Android o un build EAS autenticado con las credenciales del proyecto, además de la configuración Firebase nativa si se van a usar notificaciones remotas.
+
 ## Estado y límites de esta entrega
 
 El código implementa login y registro de clientes, perfiles Firebase compatibles con la colección antigua `users` y la colección de app `usuarios`, lista administrativa de clientes, activación de empleados a partir de cuentas existentes, catálogo de servicios con duración, turnos semanales de empleado, cálculo seguro de franjas libres, reservas con control de conflictos, confirmación/rechazo, inicio/final del trabajo y métricas de tiempo real.
