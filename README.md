@@ -2,6 +2,23 @@
 
 Aplicación móvil Expo Router / React Native / TypeScript para clientes, empleados y administración del salón en Honduras. Firebase Authentication valida correo y contraseña; Firestore conserva perfiles y datos de negocio, y Cloud Functions protegen reservas, cambios de roles y cronometraje.
 
+## EUFORIA4 — mejoras de entrega
+
+Esta versión parte de EUFORIA3 y conserva su arquitectura de autenticación, reservas, roles, notificaciones y disponibilidad. Además, actualiza la identidad del paquete a `euforia-beauty-studio@1.1.0`, elimina la advertencia de módulos de Node, incorpora una pantalla de error recuperable con botón **Reintentar**, y mejora la accesibilidad de la pantalla de carga inicial con etiquetas para lectores de pantalla. Las mejoras no relajan las validaciones de roles ni las reglas de servidor.
+
+### Verificación local
+
+Desde la raíz del proyecto:
+
+```bash
+pnpm install --frozen-lockfile
+cd functions && pnpm install --frozen-lockfile && pnpm run build
+cd ..
+pnpm check && pnpm lint && pnpm test
+```
+
+La suite actual pasa con 39 pruebas y 1 prueba marcada como omitida por requerir una sesión externa. Estas comprobaciones no sustituyen un build EAS, una prueba en dispositivo físico ni el despliegue de Firebase.
+
 ## Estado y límites de esta entrega
 
 El código implementa login y registro de clientes, perfiles Firebase compatibles con la colección antigua `users` y la colección de app `usuarios`, lista administrativa de clientes, activación de empleados a partir de cuentas existentes, catálogo de servicios con duración, turnos semanales de empleado, cálculo seguro de franjas libres, reservas con control de conflictos, confirmación/rechazo, inicio/final del trabajo y métricas de tiempo real.

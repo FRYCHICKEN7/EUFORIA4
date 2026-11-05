@@ -7,7 +7,12 @@ import { profileRole } from "@/lib/roles";
 export default function EntryScreen() {
   const { user, profile, loading, isBiometricLocked } = useAuthSession();
   if (loading) {
-    return <View style={styles.loading}><ActivityIndicator color={BRAND.primary} /><Text style={styles.text}>Conectando con EUFORIA…</Text></View>;
+    return (
+      <View style={styles.loading} accessibilityRole="progressbar" accessibilityLabel="Conectando con EUFORIA">
+        <ActivityIndicator color={BRAND.primary} />
+        <Text style={styles.text}>Conectando con EUFORIA…</Text>
+      </View>
+    );
   }
   if (isBiometricLocked) return <Redirect href="/auth" />;
   if (!user) return <Redirect href="/auth" />;
